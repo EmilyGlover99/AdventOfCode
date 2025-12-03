@@ -20,7 +20,6 @@ class GetSafeCode:
         for instruction in self.safe_instructions_list:
             self.safe_simulator.execute_instruction(instruction)
 
-        print(self.safe_simulator.location_history)
         safe_combination = self.safe_simulator.location_history.count(0)
         return safe_combination
 

@@ -4,6 +4,9 @@ import itertools
 with open('./batteries.txt', 'r') as f:
         batteries_list = f.read().split('\n')
 
+
+# Part 1
+
 # bank_values = []
 #
 # for bank in batteries_list:
@@ -28,31 +31,24 @@ for bank in batteries_list:
     for i in range(0, 12):
         # Find the next best value for each digit
         if i == 0:
-            remaining_digits = bank[:len(bank) - 12]
+            remaining_digits = bank[:len(bank) - 12 + 1]
             largest_remaining_digit = max(remaining_digits)
             index_of_first_largest_digit = remaining_digits.index(largest_remaining_digit)
             final_number[i] = largest_remaining_digit
             final_number_indices.append(index_of_first_largest_digit)
         else:
-            print("Digit number: ", i)
             remaining_digits = bank[final_number_indices[i - 1] + 1: (len(bank) - 12) + i + 1]
-            print("Remaining digits: ", remaining_digits)
             largest_remaining_digit = max(remaining_digits)
-            print("Largest remaining digit: ", largest_remaining_digit)
-            print("Index of largest remaining digit: ", remaining_digits.index(largest_remaining_digit))
             index_of_first_largest_digit = remaining_digits.index(largest_remaining_digit) + int(final_number_indices[i - 1] + 1)
-            print(index_of_first_largest_digit)
 
             final_number[i] = largest_remaining_digit
             final_number_indices.append(index_of_first_largest_digit)
 
     combined = int("".join(map(str, final_number)))
-    print("Final combined number: ", combined)
 
     final_numbers.append(combined)
 
-print(final_numbers)
-sum(final_numbers)
+print(sum(final_numbers))
 
 
 

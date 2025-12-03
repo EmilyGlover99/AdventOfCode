@@ -49,6 +49,3 @@ for bank in batteries_list:
     final_numbers.append(combined)
 
 print(sum(final_numbers))
-
-
-
